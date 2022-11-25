@@ -4,6 +4,7 @@ import frame15_1 from "./img/frame15_1.png";
 import frame15_2 from "./img/frame15_2.png";
 import "./App.css";
 import Globe from "react-globe.gl";
+import videobg from "./videoplayback.mp4";
 const N = 1000;
 const arcsData = [...Array(N).keys()].map(() => ({
   startLat: (Math.random() - 0.5) * 180,
@@ -22,9 +23,10 @@ export default function App() {
   const [active, setActive] = useState(false);
   const [rotateSpeed, setRotateSpeed] = useState(1);
   const [myLat, setMyLat] = useState(53);
-  const [myLng, setMyLng] = useState(1);
+  const [myLng, setMyLng] = useState(-20);
   const [myAltitude, setMyAltitude] = useState(2);
   const [myautoRotate, setautoRotate] = useState(false);
+  const [goFilm, setgoFilm] = useState(false);
 
   React.useEffect(() => {
     // Auto-rotate
@@ -38,19 +40,6 @@ export default function App() {
     });
   });
 
-  // React.useEffect(() => {
-  //   // Auto-rotate
-  //   globeElement.current.controls().autoRotate = myautoRotate;
-  //   globeElement.current.controls().autoRotateSpeed = rotateSpeed;
-  //   globeElement.current.controls().enableZoom = true;
-  //   globeElement.current.pointOfView({
-  //     lat: myLat,
-  //     lng: myLng,
-  //   });
-  // }, [myAltitude]);
-
-  // React.useEffect(() => {}, [myLat]);
-
   React.useLayoutEffect(() => {
     setSize([window.innerWidth, window.innerHeight]);
   }, []);
@@ -59,14 +48,31 @@ export default function App() {
     active === true &&
     // && rotateSpeed >= 0.1
     myAltitude !== 1 &&
-    myAltitude > 0
+    myAltitude > 0.5
   ) {
     // setRotateSpeed(0);
     setTimeout(() => {
       setRotateSpeed((prev) => 0);
       setMyAltitude((prev) => (prev * 100 - 1) / 100);
-      setMyLng((prev) => (prev * 100 + 5) / 100);
+      setMyLng((prev) => (prev * 100 + 20) / 100);
     }, 40);
+  }
+
+  if (active && myAltitude < 0.5) {
+    // setRotateSpeed(0);
+    setTimeout(() => {
+      setgoFilm(true);
+    }, 3000);
+  }
+
+  if (goFilm) {
+    return (
+      <div>
+        <video className="videoTag" autoPlay muted loop>
+          <source src={videobg} />
+        </video>
+      </div>
+    );
   }
 
   return (
@@ -77,7 +83,7 @@ export default function App() {
         position: "relative",
       }}
     >
-      {}
+      {/* {myAltitude} */}
       <div>
         <Globe
           width={size[0]}
@@ -95,52 +101,23 @@ export default function App() {
           // markers={markers}
         />
       </div>
-      <div
-        style={{
-          position: "absolute",
-          top: "38%",
-          left: 505,
-          //left: "2%",
-        }}
-      >
+      <div className={active ? "m12" : "m1"}>
         <img
           width="965px"
-          //lat: 53.55, lng: 27.33
           src={frame14}
           onClick={() => {
             setActive(true);
-            // setMyLat(53.55);
-            // setMyLng(27.33);
           }}
         />
       </div>
-      <div
-        style={{
-          position: "absolute",
-          top: 10,
-          left: 10,
-
-          fontSize: "70px",
-          color: "#fff",
-          display: "flex",
-          alignItems: "center",
-        }}
-      >
+      <div className={active ? "m22" : "m2"}>
         <img width="400px" src={frame15_1} />
       </div>
-      <div
-        style={{
-          position: "absolute",
-          top: 10,
-          right: 10,
-
-          fontSize: "70px",
-          color: "#fff",
-          display: "flex",
-          alignItems: "center",
-        }}
-      >
+      <div className={active ? "m32" : "m3"}>
         <img width="400px" src={frame15_2} />
+      </div>
+      <div className={active && myAltitude < 0.5 ? "m4" : "m42"}>
+        <h2>Фирмочка</h2>
       </div>
     </div>
   );
