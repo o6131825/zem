@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+body {
+  width: 1920px;
+  height: 1080px;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -32,86 +37,94 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
 
-.m1{
+.m1 {
   position: absolute;
-          top: 38%;
-          left: 505px;
+  top: 38%;
+  left: 505px;
 }
 
-.m12{
+.m12 {
   position: absolute;
-          top: 38%;
-          left: 505px;
-          animation: 1s   1 trambling-animation; 
-          opacity: 0;
+  top: 38%;
+  left: 505px;
+  animation: 1s 1 trambling-animation;
+  opacity: 0;
 }
 
-.m2{
+.m2 {
   position: absolute;
-          top: 10px;
-          left: 10px;
+  top: 10px;
+  left: 10px;
 
-          font-size: 70px;
-          color: #fff;
-          display: flex;
-          align-items: center;
-}
-.m22{
-  position: absolute;
-          top: 10px;
-          left: 10px;
-          font-size: 70px;
-          color: #fff;
-          display: flex;
-          align-items: center;
-          animation: 1s   1 trambling-animation; 
-          opacity: 0;
+  font-size: 70px;
+  color: #fff;
+  display: flex;
+  align-items: center;
 }
 
-.m3{
+.m22 {
   position: absolute;
-          top: 10px;
-          right: 10px;
-
-          font-size: 70px;
-          color: #fff;
-          display: flex;
-          align-items: center;
-}
-.m32{
-  position: absolute;
-          top: 10px;
-          right: 10px;
-
-          font-size: 70px;
-          color: #fff;
-          display: flex;
-          align-items: center;
-          animation: 1s   1 trambling-animation; 
-          opacity: 0;
+  top: 10px;
+  left: 10px;
+  font-size: 70px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  animation: 1s 1 trambling-animation;
+  opacity: 0;
 }
 
-.m4{
+.m3 {
   position: absolute;
-          top: 45%;
-          left: 900px;
-          animation: firm;
-          
-          color: brown;
-          
+  top: 10px;
+  right: 10px;
+
+  font-size: 70px;
+  color: #fff;
+  display: flex;
+  align-items: center;
 }
 
-.m42{
+.m32 {
   position: absolute;
-          top: 38%;
-          left: 900px;
-          
-          opacity: 0;
+  top: 10px;
+  right: 10px;
+
+  font-size: 70px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  animation: 1s 1 trambling-animation;
+  opacity: 0;
+}
+
+.m4 {
+  position: absolute;
+  width: 100%;
+  top: 30%;
+  text-align: center;
+  animation: 2s 1 firm;
+  color: rgb(9, 181, 224);
+  font-size: 70px;
+
+
+}
+
+.m42 {
+  position: absolute;
+  width: 100%;
+  top: 30%;
+  text-align: center;
+  color: rgb(9, 181, 224);
+  opacity: 0;
+  font-size: 70px;
+  display: none;
 }
 
 
@@ -164,45 +177,72 @@
 @keyframes firm {
   0% {
     opacity: 0;
+    font-size: 50px;
   }
 
   10% {
     opacity: 0.1;
+    font-size: 52px;
+
   }
 
   20% {
     opacity: 0.2;
+    font-size: 54px;
   }
 
   30% {
     opacity: 0.3;
+    font-size: 56px;
   }
 
   40% {
     opacity: 0.4;
+    font-size: 58px;
   }
 
   50% {
     opacity: 0.5;
+    font-size: 60px;
   }
 
   60% {
     opacity: 0.6;
+    font-size: 62px;
   }
 
   70% {
     opacity: 0.7;
+    font-size: 64px;
   }
 
   80% {
     opacity: 0.8;
+    font-size: 66px;
   }
 
   90% {
     opacity: 0.9;
+    font-size: 68px;
   }
 
   100% {
     opacity: 1;
+    font-size: 70px;
   }
+}
+
+.videoTag {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.test {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  text-align: center;
 }
